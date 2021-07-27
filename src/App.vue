@@ -1,28 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div v-for="(len, index) in NoOfTimer" :key="index">
+      <DisplayCmp />
+    </div>
+    <button class="button" @click="addTimer">Add more</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import DisplayCmp from "./components/DisplayCmp.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    DisplayCmp,
+  },
+  data() {
+    return {
+      NoOfTimer: [1],
+    };
+  },
+
+  methods: {
+    addTimer() {
+      this.NoOfTimer.push(1);
+    },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.button {
+  margin-top: 20px;
+  width: 200px;
+  margin-left: 45%;
 }
-</style>
+</style>>
+
